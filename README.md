@@ -1,0 +1,1 @@
+﻿micro WPF demostration of MVVM pattern.
