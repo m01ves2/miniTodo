@@ -17,6 +17,7 @@ namespace miniTodo
             {
                 newTodoText = value;
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(NewTodoText)));
+                CommandManager.InvalidateRequerySuggested(); // пересчёт CanExecute
             }
         }
 
@@ -27,8 +28,11 @@ namespace miniTodo
 
         public MainViewModel()
         {
-            AddTodoCommand = new RelayCommand(AddTodo);
-            RemoveTodoCommand = new RelayCommand<string>(RemoveTodo); // команда с параметром
+            //AddTodoCommand = new RelayCommand(AddTodo);
+            //RemoveTodoCommand = new RelayCommand<string>(RemoveTodo); // команда с параметром
+
+            AddTodoCommand = new RelayCommand(AddTodo, () => !string.IsNullOrWhiteSpace(NewTodoText));
+            RemoveTodoCommand = new RelayCommand<string>(RemoveTodo, item => !string.IsNullOrWhiteSpace(item));
         }
 
         private void AddTodo()

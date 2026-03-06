@@ -17,7 +17,7 @@
                             <TextBlock Text="{Binding}" Width="120"/>
                             <Button Content="Delete" 
                         Command="{Binding DataContext.RemoveTodoCommand, RelativeSource={RelativeSource AncestorType=Window}}"
-                        CommandParameter="{Binding}"/>
+                        CommandParameter="{Binding}" Margin="5,0"/>
                         </StackPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
